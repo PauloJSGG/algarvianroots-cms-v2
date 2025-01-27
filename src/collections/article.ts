@@ -17,10 +17,20 @@ export const articleCollection = buildCollection({
       },
     },
 
+    link: {
+        dataType: "string",
+        name: "Link",
+        url: true,
+        validation: {
+            required: false,
+        },
+    },
+
     // simple boolean
     active: buildProperty({
       dataType: "boolean",
       name: "Active?",
+      defaultValue: true,
     }),
 
     // you can define this property dynamically, and modify it based on the values of other properties
@@ -52,7 +62,7 @@ export const articleCollection = buildCollection({
       name: "Blog text",
       markdown: true,
       storage: {
-        storagePath: "wtfffff",
+        storagePath: "images/articles",
         acceptedFiles: ["image/*"],
         imageCompression: {
           quality: 60,
@@ -66,13 +76,6 @@ export const articleCollection = buildCollection({
     },
 
     // array of strings
-    ingredients: {
-      name: "Ingredients",
-      dataType: "array",
-      of: {
-        dataType: "string",
-      },
-    },
 
     // url
     // amazon_link: {
@@ -106,23 +109,23 @@ export const articleCollection = buildCollection({
     // },
 
     // multiple selection
-    locale: {
-      name: "Available locales",
-      dataType: "array",
-      of: {
-        dataType: "string",
-        enumValues: {
-          es: "Spanish",
-          en: "English",
-          fr: {
-            id: "fr",
-            label: "French",
-            disabled: true,
-          },
-        },
-      },
-      defaultValue: ["es"],
-    },
+    // locale: {
+    //   name: "Available locales",
+    //   dataType: "array",
+    //   of: {
+    //     dataType: "string",
+    //     enumValues: {
+    //       es: "Spanish",
+    //       en: "English",
+    //       fr: {
+    //         id: "fr",
+    //         label: "French",
+    //         disabled: true,
+    //       },
+    //     },
+    //   },
+    //   defaultValue: ["es"],
+    // },
 
     // date
     // expiry: {
@@ -172,26 +175,26 @@ export const articleCollection = buildCollection({
     },
 
     // storing multiple images
-    images: {
-      dataType: "array",
-      name: "Images",
-      of: {
-        dataType: "string",
-        storage: {
-          storagePath: "images",
-          imageCompression: {
-            quality: 60,
-            maxWidth: 1280,
-          },
-          maxSize: 1000000,
-          acceptedFiles: ["image/*"],
-          metadata: {
-            cacheControl: "max-age=1000000",
-          },
-        },
-      },
-      description: "This fields allows uploading multiple images at once",
-    },
+    // images: {
+    //   dataType: "array",
+    //   name: "Images",
+    //   of: {
+    //     dataType: "string",
+    //     storage: {
+    //       storagePath: "images",
+    //       imageCompression: {
+    //         quality: 60,
+    //         maxWidth: 1280,
+    //       },
+    //       maxSize: 1000000,
+    //       acceptedFiles: ["image/*"],
+    //       metadata: {
+    //         cacheControl: "max-age=1000000",
+    //       },
+    //     },
+    //   },
+    //   description: "This fields allows uploading multiple images at once",
+    // },
 
     // group of properties
     // address: {
@@ -228,36 +231,36 @@ export const articleCollection = buildCollection({
     // },
 
     // block of content with dynamic properties
-    content: {
-      name: "Content",
-      dataType: "array",
-      oneOf: {
-        typeField: "type",
-        valueField: "value",
-        properties: {
-          images: {
-            dataType: "string",
-            name: "Image",
-            storage: {
-              storagePath: "images",
-              acceptedFiles: ["image/*"],
-            },
-          },
-          text: {
-            dataType: "string",
-            name: "Text",
-            markdown: true,
-          },
-          products: {
-            name: "Products",
-            dataType: "array",
-            of: {
-              dataType: "reference",
-              path: "products",
-            },
-          },
-        },
-      },
-    },
+    // content: {
+    //   name: "Content",
+    //   dataType: "array",
+    //   oneOf: {
+    //     typeField: "type",
+    //     valueField: "value",
+    //     properties: {
+    //       images: {
+    //         dataType: "string",
+    //         name: "Image",
+    //         storage: {
+    //           storagePath: "images",
+    //           acceptedFiles: ["image/*"],
+    //         },
+    //       },
+    //       text: {
+    //         dataType: "string",
+    //         name: "Text",
+    //         markdown: true,
+    //       },
+    //       products: {
+    //         name: "Products",
+    //         dataType: "array",
+    //         of: {
+    //           dataType: "reference",
+    //           path: "products",
+    //         },
+    //       },
+    //     },
+    //   },
+    // },
   },
 });
