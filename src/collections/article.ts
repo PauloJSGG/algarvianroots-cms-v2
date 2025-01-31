@@ -79,6 +79,17 @@ export const articleCollection = buildCollection({
       },
     },
 
+    //slug
+    slug: {
+      dataType: "string",
+      name: "Slug",
+      validation: {
+        required: false,
+        lowercase: true,
+        matches: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+      },
+    },
+
     // simple boolean
     active: buildProperty({
       dataType: "boolean",

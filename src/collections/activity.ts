@@ -96,6 +96,17 @@ export const activityCollection = buildCollection({
       },
       multiline: true,
     },
+    //slug
+    slug: {
+      dataType: "string",
+      name: "Slug",
+      validation: {
+        unique: true,
+        required: true,
+        lowercase: true,
+        matches: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+      },
+    },
     category: {
       dataType: "string",
       name: "Categoria",
@@ -144,6 +155,20 @@ export const activityCollection = buildCollection({
         maxSize: 20000000,
       },
       columnWidth: 400,
+    },
+
+    main_image: {
+      name: "Imagem principal",
+      dataType: "string",
+      validation: { required: true },
+      storage: {
+        storagePath: "images",
+        acceptedFiles: ["image/*"],
+        imageCompression: {
+          quality: 60,
+          maxWidth: 1280,
+        },
+      },
     },
 
     // storing multiple images
