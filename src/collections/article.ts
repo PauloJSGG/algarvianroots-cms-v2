@@ -19,6 +19,7 @@ const localeArticleCollection = buildCollection<Locale>({
     title: {
       dataType: "string",
       name: "Titulo",
+      validation: { required: true },
     },
     description: {
       dataType: "string",
@@ -26,11 +27,21 @@ const localeArticleCollection = buildCollection<Locale>({
       multiline: true,
     },
     text: {
-      name: "Texto do artigo",
-      description: "Podes utilizar textos e imagens com o markdown",
-      validation: { required: true },
       dataType: "string",
+      name: "Conteudo do artigo",
       markdown: true,
+      storage: {
+        storagePath: (data) => `images/articles/${data.entityId}`,
+        acceptedFiles: ["image/*"],
+        imageCompression: {
+          quality: 60,
+          maxWidth: 1280,
+        },
+        maxSize: 1000000,
+        metadata: {
+          cacheControl: "max-age=1000000",
+        },
+      },
     },
   },
 });
@@ -84,7 +95,7 @@ export const articleCollection = buildCollection({
       dataType: "string",
       name: "Slug",
       validation: {
-        required: false,
+        required: true,
         lowercase: true,
         matches: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
       },
@@ -96,25 +107,6 @@ export const articleCollection = buildCollection({
       name: "Ativo?",
       defaultValue: true,
     }),
-
-    // markdown
-    text: {
-      dataType: "string",
-      name: "Conteudo do artigo",
-      markdown: true,
-      storage: {
-        storagePath: (data) => `images/articles/${data.entityId}`,
-        acceptedFiles: ["image/*"],
-        imageCompression: {
-          quality: 60,
-          maxWidth: 1280,
-        },
-        maxSize: 1000000,
-        metadata: {
-          cacheControl: "max-age=1000000",
-        },
-      },
-    },
 
     // auto update on create
     created_at: {

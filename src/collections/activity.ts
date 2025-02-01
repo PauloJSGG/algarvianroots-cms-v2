@@ -1,14 +1,15 @@
 import { buildCollection, buildProperty } from "@firecms/core";
-import { EnumValues } from "@firecms/core";
 import { locales } from "../types/locales";
 type Locale = {
+  name: string;
   description: string;
+  info: string;
   itinerary: string;
   what_it_includes: string;
   points_of_interest: string;
   what_to_bring: string;
-  reservation_information: string;
-  cancellation_policy: string;
+  // reservation_information: string;
+  // cancellation_policy: string;
 };
 
 const localeActivityCollection = buildCollection<Locale>({
@@ -19,8 +20,19 @@ const localeActivityCollection = buildCollection<Locale>({
   name: "Traduções",
   singularName: "Tradução",
   properties: {
+    name: {
+      dataType: "string",
+      name: "Nome",
+      validation: { required: true },
+    },
     description: {
       name: "Descrição",
+      validation: { required: true },
+      dataType: "string",
+      multiline: true,
+    },
+    info: {
+      name: "Informação",
       validation: { required: true },
       dataType: "string",
       markdown: true,
@@ -49,18 +61,18 @@ const localeActivityCollection = buildCollection<Locale>({
       dataType: "string",
       markdown: true,
     },
-    reservation_information: {
-      name: "Informação de reserva",
-      validation: { required: true },
-      dataType: "string",
-      markdown: true,
-    },
-    cancellation_policy: {
-      name: "Política de cancelamento",
-      validation: { required: true },
-      dataType: "string",
-      markdown: true,
-    },
+    // reservation_information: {
+    //   name: "Informação de reserva",
+    //   validation: { required: true },
+    //   dataType: "string",
+    //   markdown: true,
+    // },
+    // cancellation_policy: {
+    //   name: "Política de cancelamento",
+    //   validation: { required: true },
+    //   dataType: "string",
+    //   markdown: true,
+    // },
   },
 });
 
@@ -80,22 +92,6 @@ export const activityCollection = buildCollection({
   path: "activities",
   subcollections: [localeActivityCollection],
   properties: {
-    // string property with validation
-    name: {
-      dataType: "string",
-      name: "Nome",
-      validation: {
-        required: true,
-      },
-    },
-    description: {
-      dataType: "string",
-      name: "Descrição",
-      validation: {
-        required: true,
-      },
-      multiline: true,
-    },
     //slug
     slug: {
       dataType: "string",
