@@ -143,7 +143,7 @@ export const activityCollection = buildCollection({
       dataType: "string",
       validation: { required: false },
       storage: {
-        storagePath: "videos/",
+        storagePath: (data) => `videos/activities/${data.entityId}`,
         acceptedFiles: ["video/*"],
         fileName: (context) => {
           return context.file.name;
@@ -158,7 +158,7 @@ export const activityCollection = buildCollection({
       dataType: "string",
       validation: { required: true },
       storage: {
-        storagePath: "images",
+        storagePath: (data) => `images/activities/${data.entityId}`,
         acceptedFiles: ["image/*"],
         imageCompression: {
           quality: 60,
@@ -174,7 +174,7 @@ export const activityCollection = buildCollection({
       of: {
         dataType: "string",
         storage: {
-          storagePath: "images",
+          storagePath: (data) => `images/activities/${data.entityId}`,
           imageCompression: {
             quality: 60,
             maxWidth: 1280,
