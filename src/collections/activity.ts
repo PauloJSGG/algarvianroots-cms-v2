@@ -61,18 +61,6 @@ const localeActivityCollection = buildCollection<Locale>({
       dataType: "string",
       markdown: true,
     },
-    // reservation_information: {
-    //   name: "Informação de reserva",
-    //   validation: { required: true },
-    //   dataType: "string",
-    //   markdown: true,
-    // },
-    // cancellation_policy: {
-    //   name: "Política de cancelamento",
-    //   validation: { required: true },
-    //   dataType: "string",
-    //   markdown: true,
-    // },
   },
 });
 
