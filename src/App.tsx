@@ -27,11 +27,10 @@ import {
     useInitialiseFirebase,
 } from "@firecms/firebase";
 import { CenteredView } from "@firecms/ui";
-import { demoCollection } from "./collections/demo";
 
 import { firebaseConfig } from "./firebase_config";
 import { articleCollection, localeArticleCollectionGroup } from "./collections/article";
-import { activityCollection, localeActivityCollectionGroup, localeCollectionGroup } from "./collections/activity";
+import { activityCollection, localeActivityCollectionGroup } from "./collections/activity";
 
 function App() {
 
