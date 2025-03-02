@@ -109,7 +109,7 @@ export const activityCollection = buildCollection({
         birdwatching: "Birdwatching",
         accommodation: "Accommodation",
         transportation: "Transportation",
-        "tailor_made": "Tailor-made",
+        tailor_made: "Tailor-made",
       },
       validation: {
         required: true,
@@ -205,10 +205,26 @@ export const activityCollection = buildCollection({
       defaultValue: true,
     },
     group: {
-      dataType: "boolean",
-      name: "Grupo?",
-      description: "É uma actividade de grupo?",
-      defaultValue: true,
+      dataType: "map",
+      name: "Grupo",
+      description: "É uma actividade de grupo",
+      properties: {
+        active: {
+          dataType: "boolean",
+          name: "Ativo?",
+          // description: "Está incluído grupo?",
+        },
+        min: {
+          dataType: "number",
+          name: "Mínimo",
+          description: "Número mínimo de participantes",
+        },
+        max: {
+          dataType: "number",
+          name: "Máximo",
+          description: "Número máximo de participantes",
+        },
+      },
     },
     transport: {
       dataType: "boolean",
