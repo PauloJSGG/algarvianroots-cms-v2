@@ -115,6 +115,20 @@ export const activityCollection = buildCollection({
         required: true,
       },
     },
+    color: {
+      dataType: "string",
+      name: "Cor",
+      defaultValue: "green",
+      enumValues: {
+        green: "Verde",
+        blue: "Azul",
+        yellow: "Amarelo",
+        brown: "Castanho",
+      },
+      validation: {
+        required: true,
+      },
+    },
     active: buildProperty({
       dataType: "boolean",
       name: "Ativo?",
