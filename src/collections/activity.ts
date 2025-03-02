@@ -91,13 +91,25 @@ export const activityCollection = buildCollection({
         matches: /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
       },
     },
+    pluralo_id: {
+      dataType: "string",
+      name: "Pluralo ID",
+      validation: {
+        required: false,
+      },
+    },
     category: {
       dataType: "string",
       name: "Categoria",
       enumValues: {
         workshops: "Workshop",
-        experiences: "Experiences",
         tours: "Tours",
+        experiences: "Experiences",
+        hikes: "Hikes",
+        birdwatching: "Birdwatching",
+        accommodation: "Accommodation",
+        transportation: "Transportation",
+        "tailor_made": "Tailor-made",
       },
       validation: {
         required: true,
