@@ -148,7 +148,7 @@ export const activityCollection = buildCollection({
         fileName: (context) => {
           return context.file.name;
         },
-        maxSize: 20000000,
+        maxSize: 25000000,
       },
       columnWidth: 400,
     },
